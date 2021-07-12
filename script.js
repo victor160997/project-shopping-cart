@@ -54,10 +54,10 @@ function createCartItemElement({ id, title: name, price: salePrice }) {
 }
 
 window.onload = async () => { 
+  const theCar = document.querySelector('.cart__items');
   async function adcCarListener(event) {
     const id = event.target.parentElement.firstElementChild.innerText;
     const theSelected = await selectItem(id);
-    const theCar = document.querySelector('.cart__items');
     theCar.appendChild(createCartItemElement(theSelected));
   }
   const products = await createListItens();
@@ -67,4 +67,7 @@ window.onload = async () => {
     paiList.appendChild(createProductItemElement(product))
     .lastElementChild.addEventListener('click', adcCarListener);
   });
+  const clearCar = async () => document.querySelectorAll('.cart__item')
+  .forEach((item) => theCar.removeChild(item));
+  document.querySelector('.empty-cart').addEventListener('click', await clearCar);
 };
