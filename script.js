@@ -41,7 +41,8 @@ const selectItem = async (id) => {
 };
 
 function cartItemClickListener(event) {
-  console.log(event.target);
+  const theCar = document.querySelector('.cart__items');
+  theCar.removeChild(event.target);
 }
 
 function createCartItemElement({ id, title: name, price: salePrice }) {
